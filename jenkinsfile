@@ -3,14 +3,14 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = "yourdockerhubusername/simple-ci-app"
+        DOCKER_IMAGE = "bhavichith/simple-ci-cd-app"
     }
 
     stages {
 
         stage('Checkout') {
             steps {
-                git 'https://github.com/yourrepo/simple-ci-app.git'
+                git 'https://github.com/baviamu/simple-ci-cd-app.git'
             }
         }
 
@@ -31,9 +31,9 @@ pipeline {
                 withSonarQubeEnv('SonarQube') {
                     sh '''
                     sonar-scanner \
-                    -Dsonar.projectKey=simple-ci-app \
+                    -Dsonar.projectKey=simple-ci-cd-app \
                     -Dsonar.sources=. \
-                    -Dsonar.host.url=http://EC2-IP:9000 \
+                    -Dsonar.host.url=http://3.109.182.165:9000 \
                     -Dsonar.login=$SONAR_AUTH_TOKEN
                     '''
                 }
