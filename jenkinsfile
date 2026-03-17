@@ -31,18 +31,16 @@ pipeline {
 }
 
         stage('SonarQube Analysis') {
-            steps {
-                withSonarQubeEnv('Sonar') {
-                    sh '''
-                    sonar-scanner \
-                    -Dsonar.projectKey=simple-ci-cd-app \
-                    -Dsonar.sources=. \
-                    -Dsonar.host.url=http://3.109.182.165:9000 \
-                    -Dsonar.login=$SONAR_AUTH_TOKEN
-                    '''
-                }
-            }
+    steps {
+        withSonarQubeEnv('sonar') {
+            sh '''
+            /opt/sonar-scanner/bin/sonar-scanner \
+            -Dsonar.projectKey=simple-ci-cd-app \
+            -Dsonar.sources=.
+            '''
         }
+    }
+}
 
         stage('Quality Gate') {
             steps {
