@@ -25,10 +25,10 @@ pipeline {
 }
 
         stage('Test') {
-            steps {
-                sh 'pytest'
-            }
-        }
+    steps {
+        sh './venv/bin/pytest'
+    }
+}
 
         stage('SonarQube Analysis') {
             steps {
