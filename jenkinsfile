@@ -32,7 +32,7 @@ pipeline {
 
         stage('SonarQube Analysis') {
             steps {
-                withSonarQubeEnv('SonarQube') {
+                withSonarQubeEnv('Sonar') {
                     sh '''
                     sonar-scanner \
                     -Dsonar.projectKey=simple-ci-cd-app \
